@@ -32,6 +32,8 @@ A comprehensive security vulnerability scanner for code that integrates with pop
 
 Cursor Secure Scanner is designed to help developers identify and fix security vulnerabilities during the development process, rather than discovering them later in security audits. By integrating directly into IDEs and development workflows, it provides real-time feedback on potential security issues along with actionable recommendations for fixing them.
 
+> **Disclaimer**: Cursor Secure Scanner is not an official tool developed by Cursor (the company) itself. It is solely developed by Aakash Goyal as an open source plugin tool for now.
+
 ## Features
 
 - **Real-time Vulnerability Detection**: Detects security issues as you code
