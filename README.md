@@ -4,7 +4,7 @@ A comprehensive security vulnerability scanner for code that integrates with pop
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
-[![Test Coverage](https://img.shields.io/badge/coverage-27%25-red.svg)]()
+[![Test Coverage](https://img.shields.io/badge/coverage-41%25-yellow.svg)]()
 
 ## Table of Contents
 
@@ -51,11 +51,11 @@ Cursor Secure Scanner is designed to help developers identify and fix security v
 ## Supported Languages
 
 | Language   | Static Analysis | Dynamic Analysis | Coverage Level |
-|------------|----------------|------------------|-----------------|
-| JavaScript | ✅             | ✅               | Comprehensive  |
-| Python     | ✅             | ⚠️ Partial       | Basic          |
-| Java       | ✅             | ⚠️ Limited       | Basic          |
-| C#         | ✅             | ⚠️ Experimental  | Limited        |
+| ---------- | --------------- | ---------------- | -------------- |
+| JavaScript | ✅              | ✅               | Comprehensive  |
+| Python     | ✅              | ⚠️ Partial       | Basic          |
+| Java       | ✅              | ⚠️ Limited       | Basic          |
+| C#         | ✅              | ⚠️ Experimental  | Limited        |
 
 ## Installation
 
@@ -210,6 +210,7 @@ Create a `.securerc.json` file in your project root to customize the scanner:
 Cursor Secure Scanner detects a wide range of security vulnerabilities:
 
 ### Injection Vulnerabilities
+
 - SQL Injection
 - NoSQL Injection
 - OS Command Injection
@@ -218,39 +219,46 @@ Cursor Secure Scanner detects a wide range of security vulnerabilities:
 - XPath Injection
 
 ### Cross-Site Vulnerabilities
+
 - Cross-Site Scripting (XSS)
 - Cross-Site Request Forgery (CSRF)
 - Cross-Origin Resource Sharing Misconfigurations
 
 ### Authentication & Authorization
+
 - Hardcoded Credentials
 - Insecure Authentication
 - Improper Access Control
 - JWT Misconfigurations
 
 ### Data Protection
+
 - Insecure Cryptography
 - Weak Hashing Algorithms
 - Insufficient TLS Configuration
 - Unvalidated Data Serialization/Deserialization
 
 ### Server-Side Vulnerabilities
+
 - Server-Side Request Forgery (SSRF)
 - Path Traversal
 - File Inclusion
 - XML External Entity (XXE)
 
 ### Client-Side Vulnerabilities
+
 - Insecure Direct Object References
 - DOM-based Vulnerabilities
 - Client-Side Storage Issues
 
 ### API Security
+
 - GraphQL Vulnerabilities
 - REST API Security Issues
 - Improper API Key Handling
 
 ### Other Security Issues
+
 - Prototype Pollution
 - Race Conditions
 - Insecure Random Values
@@ -261,14 +269,18 @@ Cursor Secure Scanner detects a wide range of security vulnerabilities:
 The scanner now includes comprehensive dynamic analysis capabilities:
 
 ### Taint Tracking
+
 Follows the flow of untrusted data through the application to detect how user inputs can lead to security vulnerabilities:
+
 - Identifies all sources of untrusted input (HTTP requests, user inputs, etc.)
 - Tracks data flow through variables and function calls
 - Alerts when tainted data reaches sensitive sinks (database queries, command execution, etc.)
 - Supports JavaScript, with limited support for Python, Java, and C#
 
 ### Runtime Behavior Analysis
+
 Executes code in a sandboxed environment to detect issues that only manifest during runtime:
+
 - Monitors file system operations for path traversal attempts
 - Tracks network requests to identify SSRF vulnerabilities
 - Logs command executions to detect injection attempts
@@ -276,14 +288,18 @@ Executes code in a sandboxed environment to detect issues that only manifest dur
 - Provides detailed execution context to understand vulnerability patterns
 
 ### Dependency Analysis
+
 Scans project dependencies against a database of known vulnerable packages:
+
 - Detects outdated packages with security issues
 - Provides specific vulnerability information and remediation advice
 - Supports multiple dependency formats (package.json, requirements.txt, pom.xml, .csproj)
 - Checks against a regularly updated database of CVEs
 
 ### Test Generation
+
 Automatically creates security test cases to validate vulnerability findings:
+
 - Generates language-appropriate test files (Jest, unittest, JUnit, NUnit)
 - Creates tests with payloads targeting each detected vulnerability
 - Helps validate security fixes by providing regression tests
@@ -345,13 +361,16 @@ cursor-secure scan --dynamic ./src
 ### Error Messages
 
 #### "Cannot find rules for language X"
+
 - Make sure the language is supported and properly configured in your settings.
 
 #### "Error during dynamic analysis"
+
 - Check that your code doesn't contain syntax errors that prevent execution.
 - Ensure your code doesn't require external resources that aren't available during analysis.
 
 #### "Dependency check failed"
+
 - Verify you have internet access for checking vulnerability databases.
 - Check that your dependency files are correctly formatted.
 
@@ -366,6 +385,7 @@ cursor-secure scan --dynamic ./src
 The scanner now provides comprehensive security audit reports to minimize manual review effort:
 
 ### Audit Features
+
 - **Complete Vulnerability Assessment**: Combines static, dynamic, and dependency analysis
 - **Severity Classification**: Categorizes issues by impact and exploitability
 - **Risk Prioritization**: Highlights critical issues requiring immediate attention
@@ -414,11 +434,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### Current Limitations
 
 - **Non-JavaScript Language Support**: While the scanner supports multiple languages, the level of analysis is most comprehensive for JavaScript. Python, Java, and C# support is being actively improved.
+
   - **Python**: Dynamic analysis covers basic patterns but may miss framework-specific vulnerabilities
   - **Java**: Taint tracking is limited to common patterns; full JVM integration is in development
   - **C#**: Dynamic analysis is experimental and may not detect all vulnerabilities
 
 - **Dynamic Analysis Constraints**:
+
   - Requires appropriate execution environment
   - May not detect vulnerabilities that only appear in specific runtime conditions
   - Complex applications with many external dependencies may not be fully analyzable
@@ -444,11 +466,13 @@ The Cursor Secure Scanner is most effective when used as one component of a defe
 The Cursor Security Scanner provides robust security analysis across multiple programming languages:
 
 ### JavaScript/TypeScript
+
 - Detection of XSS, CSRF, SQL injection, command injection, and path traversal vulnerabilities
 - Analysis of unsafe code patterns (eval, document.write, innerHTML)
 - NodeJS-specific vulnerability detection (directory traversal, unsafe redirects)
 
 ### Python
+
 - Detection of SQL injection vulnerabilities (sqlite3, psycopg2, mysql)
 - Command injection checks (os.system, subprocess.call)
 - Path traversal detection in file operations
@@ -456,6 +480,7 @@ The Cursor Security Scanner provides robust security analysis across multiple pr
 - Template injection vulnerability detection
 
 ### Java
+
 - SQL injection detection (JDBC, executeQuery, prepareStatement)
 - Command execution vulnerabilities (Runtime.exec, ProcessBuilder)
 - Path traversal in file operations (java.io.File)
@@ -464,6 +489,7 @@ The Cursor Security Scanner provides robust security analysis across multiple pr
 - Spring and Jakarta EE security checks
 
 ### C#
+
 - SQL injection in ADO.NET (SqlCommand, OleDbCommand)
 - Command injection detection (Process.Start, ProcessStartInfo)
 - Path traversal vulnerabilities (File, Directory operations)
@@ -478,12 +504,12 @@ You can configure the scanner with various options:
 
 ```javascript
 const options = {
-  severityThreshold: 'medium', // 'info', 'warning', 'medium', 'high', 'critical'
-  includePatterns: ['**/*.js', '**/*.py', '**/*.java', '**/*.cs'],
-  excludePatterns: ['**/node_modules/**', '**/test/**'],
+  severityThreshold: "medium", // 'info', 'warning', 'medium', 'high', 'critical'
+  includePatterns: ["**/*.js", "**/*.py", "**/*.java", "**/*.cs"],
+  excludePatterns: ["**/node_modules/**", "**/test/**"],
   dynamicAnalysis: true,
-  reportFormat: 'json' // 'json', 'html', 'markdown', 'text'
+  reportFormat: "json", // 'json', 'html', 'markdown', 'text'
 };
 
-const result = await scanner.scanDirectory('./my-project', options);
-``` 
+const result = await scanner.scanDirectory("./my-project", options);
+```
