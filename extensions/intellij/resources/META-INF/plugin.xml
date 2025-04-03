@@ -1,0 +1,35 @@
+<idea-plugin>
+    <id>com.cursorsecure.intellij</id>
+    <name>Cursor Secure Scanner</name>
+    <vendor email="support@cursorsecure.com" url="https://cursorsecure.com">Cursor Secure</vendor>
+
+    <description><![CDATA[
+        Security vulnerability scanner for code.
+        <br>
+        Features:
+        <ul>
+            <li>Real-time vulnerability scanning</li>
+            <li>Support for JavaScript, Python, Java, and C#</li>
+            <li>Customizable rules</li>
+            <li>Vulnerability fix suggestions</li>
+        </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <toolWindow id="Cursor Secure" anchor="bottom" factoryClass="com.cursorsecure.intellij.SecurityToolWindowFactory"/>
+        <annotator language="JAVA" implementationClass="com.cursorsecure.intellij.SecurityAnnotator"/>
+        <annotator language="JavaScript" implementationClass="com.cursorsecure.intellij.SecurityAnnotator"/>
+        <annotator language="Python" implementationClass="com.cursorsecure.intellij.SecurityAnnotator"/>
+    </extensions>
+
+    <actions>
+        <group id="SecurityScanner.Menu" text="Security Scanner" description="Security Scanner">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <action id="SecurityScanner.Scan" class="com.cursorsecure.intellij.SecurityScannerAction" text="Scan Current File" description="Scan the current file for security vulnerabilities"/>
+            <action id="SecurityScanner.Project" class="com.cursorsecure.intellij.SecurityScanProjectAction" text="Scan Project" description="Scan the entire project for security vulnerabilities"/>
+        </group>
+    </actions>
+</idea-plugin> 

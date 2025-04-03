@@ -1,0 +1,65 @@
+{
+  "name": "cursor-secure-scanner",
+  "displayName": "Cursor Secure Scanner",
+  "description": "Security vulnerability scanner for VS Code",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Linters",
+    "Security"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:python",
+    "onLanguage:java",
+    "onLanguage:csharp"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "secure-scanner.scan",
+        "title": "Secure Scanner: Scan Current File"
+      },
+      {
+        "command": "secure-scanner.scanProject",
+        "title": "Secure Scanner: Scan Project"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Secure Scanner",
+      "properties": {
+        "secureScanner.enableRealTimeScanning": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable real-time scanning of files"
+        },
+        "secureScanner.ignorePatterns": {
+          "type": "array",
+          "default": [
+            "**/node_modules/**",
+            "**/dist/**",
+            "**/build/**"
+          ],
+          "description": "Patterns to ignore when scanning"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.2.1",
+    "@types/node": "^16.11.7",
+    "@types/vscode": "^1.74.0",
+    "chai": "^5.2.0"
+  }
+}

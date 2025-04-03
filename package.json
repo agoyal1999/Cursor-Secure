@@ -1,0 +1,35 @@
+{
+  "name": "cursor-secure",
+  "version": "1.0.0",
+  "description": "A security vulnerability scanner for Visual Studio Code",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "security",
+    "vulnerability",
+    "scanner",
+    "vscode",
+    "extension"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^16.11.7",
+    "axios": "^0.27.2",
+    "jsonwebtoken": "^9.0.0",
+    "vscode": "^1.75.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/vscode": "^1.75.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  }
+} 

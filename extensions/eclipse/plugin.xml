@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="com.cursorsecure.eclipse.commands.category"
+            name="Cursor Secure Scanner">
+      </category>
+      <command
+            categoryId="com.cursorsecure.eclipse.commands.category"
+            id="com.cursorsecure.eclipse.commands.scanCommand"
+            name="Scan Current File">
+      </command>
+      <command
+            categoryId="com.cursorsecure.eclipse.commands.category"
+            id="com.cursorsecure.eclipse.commands.scanProjectCommand"
+            name="Scan Project">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.cursorsecure.eclipse.handlers.ScanHandler"
+            commandId="com.cursorsecure.eclipse.commands.scanCommand">
+      </handler>
+      <handler
+            class="com.cursorsecure.eclipse.handlers.ScanProjectHandler"
+            commandId="com.cursorsecure.eclipse.commands.scanProjectCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="com.cursorsecure.eclipse.menus.securityMenu"
+               label="Security Scanner"
+               mnemonic="S">
+            <command
+                  commandId="com.cursorsecure.eclipse.commands.scanCommand"
+                  id="com.cursorsecure.eclipse.menus.scanCommand"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="com.cursorsecure.eclipse.commands.scanProjectCommand"
+                  id="com.cursorsecure.eclipse.menus.scanProjectCommand"
+                  mnemonic="P">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.cursorsecure.eclipse.toolbars.securityToolbar">
+            <command
+                  commandId="com.cursorsecure.eclipse.commands.scanCommand"
+                  icon="icons/sample.png"
+                  id="com.cursorsecure.eclipse.toolbars.scanCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="com.cursorsecure.eclipse.views.category"
+            name="Cursor Secure Scanner">
+      </category>
+      <view
+            category="com.cursorsecure.eclipse.views.category"
+            class="com.cursorsecure.eclipse.views.SecurityView"
+            icon="icons/sample.png"
+            id="com.cursorsecure.eclipse.views.SecurityView"
+            name="Security Scanner Results">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="com.cursorsecure.eclipse.views.SecurityView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.core.resources.markers"
+         id="com.cursorsecure.eclipse.markers.securityVulnerability"
+         name="Security Vulnerability">
+       <super type="org.eclipse.core.resources.problemmarker"/>
+       <persistent value="true"/>
+       <attribute name="ruleId"/>
+       <attribute name="severity"/>
+   </extension>
+</plugin> 
