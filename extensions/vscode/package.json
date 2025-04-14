@@ -1,8 +1,9 @@
 {
   "name": "cursor-secure-scanner",
   "displayName": "Cursor Secure Scanner",
-  "description": "Security vulnerability scanner for VS Code",
-  "version": "0.1.0",
+  "description": "A comprehensive security vulnerability scanner for code that integrates with VS Code to identify, explain, and remediate security issues in real-time",
+  "version": "1.0.0",
+  "publisher": "aakashgoyal",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -10,6 +11,25 @@
     "Linters",
     "Security"
   ],
+  "keywords": [
+    "security",
+    "vulnerability",
+    "scanner",
+    "code-analysis",
+    "security-scanning"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agoyal1999/Cursor-Secure.git"
+  },
+  "homepage": "https://github.com/agoyal1999/Cursor-Secure",
+  "bugs": {
+    "url": "https://github.com/agoyal1999/Cursor-Secure/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Aakash Goyal"
+  },
   "activationEvents": [
     "onLanguage:javascript",
     "onLanguage:typescript",
